@@ -5,4 +5,4 @@ Dynamic Movement Primitives and Reinforcement Learning for a Ping Pong playing R
 
 * Exploration Learning in the Gazebo Simulator
 
-[![Exploration Learning in the Gazebo Simulator](http://img.youtube.com/vi/HBNGeYZKJM4/maxresdefault.jpg)](https://www.youtube.com/watch?v=HBNGeYZKJM4 "Exploration Learning in the Gazebo Simulator")
+[![Exploration Learning in the Gazebo Simulator](https://raw.githubusercontent.com/carlos-cardoso/robot-skills/master/Figures/sim_screen_play.jpg)](https://www.youtube.com/watch?v=HBNGeYZKJM4 "Exploration Learning in the Gazebo Simulator")
