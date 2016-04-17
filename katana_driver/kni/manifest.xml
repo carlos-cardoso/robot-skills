@@ -1,0 +1,20 @@
+<package>
+  <description brief="Third-party KNI library for Katana arms">
+
+     This package provides the third-party KNI (Katana Native Interface) library for Katana
+     robot arms.
+
+     Instead of using the KNI library directly, the <a href="/wiki/katana">katana</a>
+     package should be used for communication with the Katana arm.
+
+  </description>
+  <author>Neuronics AG (see AUTHORS.txt); ROS wrapper by Martin Günther</author>
+  <license>GPL</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/kni</url>
+  <export>
+    <cpp cflags="-I${prefix}/KNI_4.3.0/include" lflags="-Wl,-rpath,${prefix}/KNI_4.3.0/lib/linux -L${prefix}/KNI_4.3.0/lib/linux -lKNIBase -lKinematics -lKNI_InvKin -lKNI_LM"/>
+  </export>
+</package>
+
+

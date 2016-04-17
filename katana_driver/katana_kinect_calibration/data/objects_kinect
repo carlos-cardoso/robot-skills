@@ -1,0 +1,8 @@
+# the number of patterns to be recognized
+1
+
+# The calibration pattern to be published as frame /katana_pattern_seen
+katana_pattern_seen
+4x4_9.patt
+42.0 # this is the pattern size in mm
+0.0 0.0 # center of the pattern

@@ -1,0 +1,18 @@
+<package>
+  <description brief="URDF description of the Katana arm">
+
+     This package contains an URDF description of the Katana arm and all supporting mesh files.
+
+  </description>
+  <author>Martin Günther</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/katana_description</url>
+  <depend package="urdf"/>
+  <depend package="convex_decomposition"/>
+  <depend package="ivcon"/>
+  <depend package="transmission_interface"/>
+
+</package>
+
+

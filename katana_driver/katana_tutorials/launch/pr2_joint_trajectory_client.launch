@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<launch>
+  <node pkg="katana_tutorials" name="pr2_joint_trajectory_client" type="pr2_joint_trajectory_client" />
+</launch>

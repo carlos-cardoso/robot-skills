@@ -1,0 +1,47 @@
+<?xml version="1.0"?> 
+<gazebo version='1.0'>
+  <world name='default'>
+    <scene>
+      <ambient rgba='0.800000 0.800000 0.800000 0.800000'/>
+      <background rgba='0.700000 0.700000 0.700000 1.000000'>
+        <sky material='Gazebo/CloudySky'/>
+      </background>
+      <shadows enabled='1'/>
+    </scene>
+    <physics type='ode' update_rate='0.000000'>
+      <gravity xyz='0.000000 0.000000 -9.800000'/>
+      <ode>
+        <solver type='quick' dt='0.001000' iters='50' precon_iters='0' sor='1.300000'/>
+        <constraints cfm='0.0000000001' erp='0.200000' contact_max_correcting_vel='30.000000' contact_surface_layer='0.001000'/>
+      </ode>
+    </physics>
+    <model name='gplane' static='1'>
+      <origin pose='0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000'/>
+      <link name='plane' gravity='1' self_collide='0' kinematic='0'>
+        <origin pose='0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000'/>
+        <collision name='plane' laser_retro='0.000000'>
+          <origin pose='0.000000 0.000000 0.000000 0.000000 -0.000000 0.000000'/>
+          <geometry>
+            <plane normal='0.000000 0.000000 1.000000'/>
+          </geometry>
+          <surface>
+            <friction>
+              <ode mu='50.000000' mu2='50.000000' fdir1='0.000000 0.000000 0.000000' slip1='0.000000' slip2='0.000000'/>
+            </friction>
+            <bounce restitution_coefficient='0.000000' threshold='100000.000000'/>
+            <contact>
+              <ode soft_cfm='0.000000' soft_erp='0.200000' kp='1000000000.000000' kd='1.000000' max_vel='100.000000' min_depth='0.001000'/>
+            </contact>
+          </surface>
+        </collision>
+      </link>
+    </model>
+    <light name='point_white' type='point' cast_shadows='0'>
+      <origin pose='0.000000 0.000000 3.000000 0.000000 -0.000000 0.000000'/>
+      <diffuse rgba='1.000000 1.000000 1.000000 1.000000'/>
+      <specular rgba='0.100000 0.100000 0.100000 1.000000'/>
+      <attenuation range='10.000000' linear='0.100000' constant='0.200000' quadratic='0.000000'/>
+      <direction xyz='0.000000 0.000000 -1.000000'/>
+    </light>
+  </world>
+</gazebo>

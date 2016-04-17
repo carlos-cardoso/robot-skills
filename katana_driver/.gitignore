@@ -1,0 +1,17 @@
+.cproject
+.project
+.pydevproject
+cmake_install.cmake
+build/
+bin/
+lib/
+msg_gen/
+srv_gen/
+*.pyc
+*/msg/*Feedback.msg
+*/msg/*Goal.msg
+*/msg/*Action.msg
+*/msg/*Result.msg
+*/src/*/cfg
+*/src/*/msg
+*/src/*/srv

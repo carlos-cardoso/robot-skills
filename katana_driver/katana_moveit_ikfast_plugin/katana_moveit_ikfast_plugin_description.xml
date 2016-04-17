@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='ASCII'?>
+<library path="lib/libkatana_moveit_ikfast_kinematics_plugin">
+ <class name="katana_450_6m90a_kinematics/IKFastKinematicsPlugin" type="katana_450_6m90a_kinematics::IKFastKinematicsPlugin" base_class_type="kinematics::KinematicsBase">
+    <description>IKFast61 plugin for closed-form kinematics</description>
+  </class>
+</library>

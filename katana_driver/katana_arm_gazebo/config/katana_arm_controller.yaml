@@ -1,0 +1,29 @@
+katana_arm_controller:
+  type: "effort_controllers/JointTrajectoryController"
+  joints:
+    - katana_motor1_pan_joint
+    - katana_motor2_lift_joint
+    - katana_motor3_lift_joint
+    - katana_motor4_lift_joint
+    - katana_motor5_wrist_roll_joint
+  gains:
+    katana_motor1_pan_joint: {p: 6.0, d: 4.0, i: 0.0, i_clamp: 0.0}
+    katana_motor2_lift_joint: {p: 4.0, d: 3.0, i: 0.0, i_clamp: 0.0}
+    katana_motor3_lift_joint: {p: 2.0, d: 1.5, i: 0.0, i_clamp: 0.0}
+    katana_motor4_lift_joint: {p: 1.0, d: 1.0, i: 0.0, i_clamp: 0.0}
+    katana_motor5_wrist_roll_joint: {p: 0.1, d: 0.05, i: 0.0, i_clamp: 0.0}
+  constraints:
+    goal_time: 0.6                    # Defaults to 0.0 (is enforced!)
+    stopped_velocity_tolerance: 0.02  # Defaults to 0.01
+    katana_motor1_pan_joint:
+      #trajectory: 0.05                # Defaults to zero (i.e., tolerance is not enforced)
+      goal: 0.05                      # Defaults to zero (i.e., tolerance is not enforced)
+    katana_motor2_lift_joint:
+      goal: 0.05
+    katana_motor3_lift_joint:
+      goal: 0.05
+    katana_motor4_lift_joint:
+      goal: 0.05
+    katana_motor5_wrist_roll_joint:
+      goal: 0.05
+

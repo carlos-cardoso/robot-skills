@@ -1,0 +1,9 @@
+katana_joints:
+  - katana_motor1_pan_joint
+  - katana_motor2_lift_joint
+  - katana_motor3_lift_joint
+  - katana_motor4_lift_joint
+  - katana_motor5_wrist_roll_joint
+katana_gripper_joints:
+  - katana_r_finger_joint
+  - katana_l_finger_joint

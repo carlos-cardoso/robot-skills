@@ -1,0 +1,31 @@
+<robot name="coke_can_model">
+  <link name="coke_can">
+    <inertial>
+      <!-- EVIL HACK: reduce mass to 0.001 kg so the arm can lift it; the inertia is still for 0.1 kg, though. -->
+      <!--<mass value="0.1" />-->
+      <mass value="0.001" />
+
+      <!-- center of mass (com) is defined w.r.t. link local coordinate system -->
+      <origin xyz="0 0 0.06" /> 
+      <inertia  ixx="0.000155983" ixy="0.0"  ixz="0.0"  iyy="0.000155983"  iyz="0.0"  izz="0.0000561125" />
+    </inertial>
+    <visual>
+      <!-- visual origin is defined w.r.t. link local coordinate system -->
+      <origin xyz="0 0 -0.1825" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://katana_arm_gazebo/meshes/coke_can.dae" scale="0.001 0.001 0.001" />
+      </geometry>
+    </visual>
+    <collision>
+      <!-- collision origin is defined w.r.t. link local coordinate system -->
+      <origin xyz="0 0 -0.1825" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://katana_arm_gazebo/meshes/coke_can.dae" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="coke_can">
+    <material>Gazebo/Red</material>
+    <turnGravityOff>false</turnGravityOff>
+  </gazebo>
+</robot>

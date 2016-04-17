@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://ros.org/wiki/xacro" 
+  name="katana_300_6m180_with_controlbox">
+
+  <xacro:include filename="$(find katana_description)/urdf/controlbox.urdf.xacro"/>
+  <xacro:include filename="$(find katana_description)/urdf/katana_300_6m180.urdf.xacro"/>
+</robot>

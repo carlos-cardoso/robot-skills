@@ -1,0 +1,27 @@
+<package>
+  <description brief="Some test and demo programs for the katana_driver stack.">
+
+     This package contains test and demo programs for the katana_driver stack.
+
+  </description>
+  <author>Martin Günther</author>
+  <license>GPL</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/katana_tutorials</url>
+
+  <depend package="roscpp"/>
+  <depend package="actionlib"/>
+
+  <!-- JointTrajectory message -->
+  <depend package="trajectory_msgs"/>
+
+  <!-- FollowJointTrajectory action -->
+  <depend package="control_msgs"/>
+
+  <!-- PR2's JointTrajectory action -->
+  <depend package="pr2_controllers_msgs"/>
+
+  <!-- JointState message -->
+  <depend package="sensor_msgs"/>
+</package>
+

@@ -1,0 +1,24 @@
+<package>
+  <description brief="Calibration module Kinect camera pose">
+
+    <p>
+    This package uses the <a href="/wiki/ar_kinect">ar_kinect</a>
+    module to calibrate a fixed joint between the base link and
+    a Kinect camera which monitors a Katana arm equipped with an AR code.
+    </p>
+
+  </description>
+  <author>Michael Goerner</author>
+  <license>GPL</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/katana_kinect_calibration</url>
+
+  <depend package="rospy"/>
+  <depend package="tf"/>
+  <depend package="ar_pose"/>
+  <depend package="ar_kinect"/>
+  <depend package="sensor_msgs"/>
+  <depend package="actionlib"/>
+  <depend package="katana_msgs"/>
+
+</package>

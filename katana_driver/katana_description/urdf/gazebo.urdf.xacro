@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+    </plugin>
+
+    <!-- gripper controller -->
+    <plugin name="katana_gripper_controller" filename="libgazebo_ros_katana_gripper.so">
+      <alwaysOn>true</alwaysOn>
+      <node_namespace>katana</node_namespace>
+      <r_finger_joint>katana_r_finger_joint</r_finger_joint>
+      <l_finger_joint>katana_l_finger_joint</l_finger_joint>
+      <updateRate>1000.0</updateRate>
+      <max_torque>0.5</max_torque>
+    </plugin>
+
+    <!-- a formal implementation of grasp hack in gazebo with fixed joint -->
+    <gripper name="katana_gripper_grasp_hack">
+      <grasp_check>
+        <attach_steps>20</attach_steps>
+        <detach_steps>40</detach_steps>
+        <min_contact_count>2</min_contact_count>
+      </grasp_check>
+      <gripper_link>katana_r_finger_link</gripper_link>
+      <gripper_link>katana_l_finger_link</gripper_link>
+      <palm_link>katana_gripper_link</palm_link>
+    </gripper>
+  </gazebo>
+
+
+  <!-- NOTE: all gazebo extensions are listed here: simulator_gazebo/gazebo/src/urdf2gazebo.cpp -->
+  <!-- all materials are listed here: simulator_gazebo/gazebo/gazebo/share/gazebo/Media/materials/ -->
+
+  <!-- *************** links *************** -->
+  <gazebo reference="katana_base_link">
+    <material value="Gazebo/Grey" />
+  </gazebo>
+
+  <gazebo reference="katana_motor1_pan_link">
+    <material value="Gazebo/Grey" />
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+
+  <gazebo reference="katana_motor2_lift_link">
+    <material value="Gazebo/Grey" />
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+
+  <gazebo reference="katana_motor3_lift_link">
+    <material value="Gazebo/Grey" />
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+
+  <gazebo reference="katana_motor4_lift_link">
+    <material value="Gazebo/Grey" />
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+
+  <gazebo reference="katana_motor5_wrist_roll_link">
+    <material value="Gazebo/Grey" />
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+
+  <gazebo reference="katana_gripper_link">
+    <material value="Gazebo/Grey" />
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+
+  <xacro:macro name="gazebo_finger_link" params="prefix">
+    <!-- TODO: set friction parameters (mu1, mu2, kp, kd) for fingers (see PR2 gripper.gazebo.xacro) -->
+    <gazebo reference="katana_${prefix}_finger_link">
+      <material value="Gazebo/Grey" />
+      <turnGravityOff>true</turnGravityOff>
+    </gazebo>
+  </xacro:macro>
+
+  <xacro:gazebo_finger_link  prefix="r"/>
+  <xacro:gazebo_finger_link  prefix="l"/>
+
+  <!-- *************** joints ************** -->
+  <!-- note: initial_joint_position isn't supported by Gazebo yet -->
+
+  <gazebo reference="katana_motor1_pan_joint">
+    <initial_joint_position>-3.022</initial_joint_position>
+  </gazebo>
+
+  <gazebo reference="katana_motor2_lift_joint">
+    <initial_joint_position>2.163</initial_joint_position>
+  </gazebo>
+
+  <gazebo reference="katana_motor3_lift_joint">
+    <initial_joint_position>-2.207</initial_joint_position>
+  </gazebo>
+
+  <gazebo reference="katana_motor4_lift_joint">
+    <initial_joint_position>-2.026</initial_joint_position>
+  </gazebo>
+
+  <gazebo reference="katana_motor5_wrist_roll_joint">
+    <initial_joint_position>-2.990</initial_joint_position>
+  </gazebo>
+
+  <xacro:macro name="gazebo_finger_joint" params="prefix">
+    <gazebo reference="katana_${prefix}_finger_joint">
+      <initial_joint_position>0.3</initial_joint_position>
+    </gazebo>
+  </xacro:macro>
+
+  <xacro:gazebo_finger_joint prefix="r"/>
+  <xacro:gazebo_finger_joint prefix="l"/>
+</robot>

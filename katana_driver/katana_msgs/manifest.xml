@@ -1,0 +1,16 @@
+<package>
+  <description brief="katana_msgs contains messages specific to the Katana arm">
+
+     This package contains messages specific to the Neuronics Katana arm.
+
+  </description>
+  <author>Martin Günther</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/katana_msgs</url>
+  <depend package="sensor_msgs"/>
+  <depend package="actionlib_msgs" />
+
+</package>
+
+

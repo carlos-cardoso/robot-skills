@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- load katana urdf -->
+  <include file="$(find katana_description)/launch/upload_$(env KATANA_TYPE).launch" />
+
+  <!-- which joints does this katana instance control? (for teleop etc.) -->
+  <rosparam command="load" file="$(find katana)/config/katana_arm_controllers.yaml" />
+
+  <!-- load world -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find katana_arm_gazebo)/worlds/grasp.world"/>
+  </include>
+
+  <!-- push robot_description to factory and spawn robot in gazebo -->
+  <!-- <node name="spawn_katana_model" pkg="gazebo_ros" type="spawn_model" args="$(optenv ROBOT_INITIAL_POSE) -z 0.01 -unpause -urdf -param robot_description -model katana" respawn="false" output="screen"/> -->
+  <node name="spawn_katana_model" pkg="gazebo_ros" type="spawn_model" args="$(optenv ROBOT_INITIAL_POSE) -z 0.01 -urdf -param robot_description -model katana" respawn="false" output="screen"/>
+
+  <!-- Default Controllers -->
+  <rosparam command="load" file="$(find katana_arm_gazebo)/config/katana_arm_controller.yaml" />
+  <rosparam command="load" file="$(find katana_arm_gazebo)/config/katana_gripper_controller.yaml" />
+
+  <!-- Controller manager parameters -->
+  <param name="pr2_controller_manager/mechanism_statistics_publish_rate" value="1.0" />
+  <param name="pr2_controller_manager/joint_state_publish_rate" value="100.0" />
+
+  <!-- Robot state publisher -->
+  <node pkg="robot_state_publisher" type="state_publisher" name="robot_state_publisher">
+    <param name="publish_frequency" type="double" value="50.0" />
+    <param name="tf_prefix" type="string" value="" />
+  </node>
+
+  <!-- Controllers that come up loaded -->
+  <node name="default_loaded_controllers_spawner"
+    pkg="pr2_controller_manager" type="spawner" output="screen"
+    args="--wait-for=/calibrated katana_arm_controller" />
+
+  <!-- Fake calibration -->
+  <node pkg="rostopic" type="rostopic" name="fake_joint_calibration"
+    args="pub /calibrated std_msgs/Bool true" />
+
+  <!-- Spawn objects -->
+  <!--
+  <include file="$(find katana_arm_gazebo)/launch/cylinder_object.launch"/>
+  -->
+  <include file="$(find katana_arm_gazebo)/launch/cube.launch"/>
+  <include file="$(find katana_arm_gazebo)/launch/cup.launch"/>
+
+  <group ns="katana_arm_controller">
+    <node pkg="katana_joint_movement_adapter" type="joint_movement_adapter" name="joint_movement_adapter" output="screen">
+      <param name="max_acc" value="1.190799" />
+      <param name="max_vel" value="2.646220" />
+    </node>
+  </group>
+</launch>
+

@@ -1,0 +1,28 @@
+<package>
+  <description brief="Simulates a Katana arm in Gazebo">
+
+    This package starts a Neuronics Katana robot arm in the Gazebo simulation environment. It is modeled after the <a href="http://www.ros.org/wiki/pr2_arm_gazebo">pr2_arm_gazebo</a> package by John Hsu.
+
+  </description>
+  <author>Martin Günther</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/katana_arm_gazebo</url>
+  <depend package="roscpp"/>
+  <depend package="gazebo_ros"/>
+  <depend package="urdf"/>
+  <depend package="xacro"/>
+  <depend package="robot_state_publisher"/>
+  <depend package="katana_description"/>
+  <depend package="pr2_controller_manager"/>
+  <depend package="robot_mechanism_controllers"/>
+  <depend package="katana_gazebo_plugins"/>
+  <depend package="joint_trajectory_controller"/>
+
+  <!-- needed for test programs (moving the joints and gripper): -->  
+  <depend package="actionlib"/>
+  <depend package="pr2_controllers_msgs"/>
+  <depend package="std_msgs"/>
+</package>
+
+

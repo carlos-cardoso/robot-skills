@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- send cylinder_object urdf to param server -->
+  <param name="object_description" command="$(find xacro)/xacro.py $(find katana_arm_gazebo)/urdf/cylinder_object.urdf.xacro" />
+
+  <!-- push cylinder_object_description to factory and spawn in gazebo -->
+  <node name="spawn_object" pkg="gazebo_ros" type="spawn_model" args="-urdf -param object_description -x 0.97 -z 0.80 -model object_1" respawn="false" output="screen" />
+</launch>
+

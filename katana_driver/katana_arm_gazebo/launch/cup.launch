@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- send cube.urdf to param server -->
+  <param name="object_description2" textfile="$(find katana_arm_gazebo)/urdf/coke_can.urdf" />
+
+  <!-- push object_description to factory and spawn in gazebo -->
+  <node name="spawn_object2" pkg="gazebo_ros" type="spawn_model" args="-urdf -param object_description2 -x 0.60 -y -0.205 -z 0.30 -model _obj_IKEA-CUP-SOLBRAEND-BLUE" respawn="false" output="screen" />
+</launch>
+
+
+

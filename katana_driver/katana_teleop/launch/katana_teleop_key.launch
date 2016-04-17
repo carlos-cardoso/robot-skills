@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- start keyboard tele op node -->
+  <node pkg="katana_teleop" type="katana_teleop_key" name="katana_teleop_key" output="screen"/>
+</launch>

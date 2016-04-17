@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!--
+This launch file expects all of your robot nodes up and running.
+It expects a kinect publishing under /kinect and a running Katana
+action server.
+
+If you use publish_tf:=true, make sure your kinect camera is not
+statically connected to the rest of your robot.
+-->
+
+<launch>
+  <!-- How many samples should be gathered in each pose -->
+  <arg name="samples_required" default="300"/>
+  <!-- How long to wait for the required samples -->
+  <arg name="timeout"          default="20"/>
+  <!-- Publish transforms(/kinect_link -> /base_link) used for calibration -->
+  <arg name="publish_tf"       default="false"/>
+  <!-- Number of runs to run -->
+  <arg name="runs"             default="1"/>
+  <!-- Location of the config file that will be written -->
+  <arg name="config_file"      default="$(env HOME)/.ros/kinect_pose.urdf.xacro"/>
+  <!-- Actually (over?)write the config file -->
+  <arg name="write_config"     default="true"/>
+
+  <node name="ar_kinect" pkg="ar_kinect" type="ar_kinect" respawn="true" output="screen">
+    <param name="marker_pattern_list" type="string" value="$(find katana_kinect_calibration)/data/objects_kinect"/>
+    <param name="marker_data_directory" type="string" value="$(find katana_kinect_calibration)/data"/>
+    <param name="threshold" type="int" value="100"/>
+    <remap from="points" to="/kinect/depth_registered/points"/>
+  </node>
+
+  <node pkg="katana_kinect_calibration" type="calibrate.py" name="katana_kinect_calibration" required="true" output="screen">
+    <param name="samples_required" type="int" value="$(arg samples_required)"/>
+    <param name="timeout" type="int" value="$(arg timeout)"/>
+    <param name="publish_tf" type="bool" value="$(arg publish_tf)"/>
+    <param name="runs" type="int" value="$(arg runs)"/>
+    <param name="config_file" type="string" value="$(arg config_file"/>
+    <param name="write_config" type="bool" value="$(arg write_config)"/>
+  </node>
+
+</launch>

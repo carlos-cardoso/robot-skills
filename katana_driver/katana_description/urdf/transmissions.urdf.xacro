@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+  <!-- transmissions are required by the controller manager (here: for simulation in gazebo) -->
+
+  <xacro:macro name="katana_transmission" params="name">
+    <transmission name="${name}_trans">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="${name}_joint" />
+      <actuator name="${name}_motor">
+        <hardwareInterface>EffortJointInterface</hardwareInterface>
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+  </xacro:macro>
+
+  <xacro:katana_transmission name="katana_motor1_pan" />
+  <xacro:katana_transmission name="katana_motor2_lift" />
+  <xacro:katana_transmission name="katana_motor3_lift" />
+  <xacro:katana_transmission name="katana_motor4_lift" />
+  <xacro:katana_transmission name="katana_motor5_wrist_roll" />
+  <xacro:katana_transmission name="katana_r_finger" />
+  <xacro:katana_transmission name="katana_l_finger" />
+</robot>
