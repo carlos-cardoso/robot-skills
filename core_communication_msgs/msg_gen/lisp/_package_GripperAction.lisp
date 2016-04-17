@@ -1,0 +1,14 @@
+(cl:in-package core_communication_msgs-msg)
+(cl:export '(ABSOLUTEPOSITION-VAL
+          ABSOLUTEPOSITION
+          ABSPOSISSET-VAL
+          ABSPOSISSET
+          CLOSEGRIPPER-VAL
+          CLOSEGRIPPER
+          NOMOVEMENTTIMEOUT-VAL
+          NOMOVEMENTTIMEOUT
+          OPENGRIPPER-VAL
+          OPENGRIPPER
+          USECUSTOMNOMOVEMENTTIMEOUT-VAL
+          USECUSTOMNOMOVEMENTTIMEOUT
+))
