@@ -1,0 +1,39 @@
+CMAKE_MINIMUM_REQUIRED( VERSION 2.8 )
+PROJECT( natnetlinux )
+
+SET( PROJECT_SOURCE_ROOT ${CMAKE_CURRENT_SOURCE_DIR} )
+SET( PROJECT_BINARY_ROOT ${CMAKE_CURRENT_BINARY_DIR} )
+SET( VERSION_MAJOR 0 )
+SET( VERSION_MINOR 1 )
+SET( VERSION_PATCH 1 )
+SET( VERSION_STRING "${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH}" )
+
+OPTION( BUILD_EXAMPLES "If on, build executable examples." ON )
+
+# Add custom CMakeModules path
+#SET( CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/CMakeModules ${CMAKE_MODULE_PATH} )
+
+# Put executables in bin/
+SET(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/bin")
+
+# Include our own directories.
+INCLUDE_DIRECTORIES( "${CMAKE_CURRENT_SOURCE_DIR}/include" )
+
+# Need to find boost at build time only if we are actually compiling examples.
+IF( ${BUILD_EXAMPLES} )
+   FIND_PACKAGE( Boost COMPONENTS program_options system thread REQUIRED)
+   INCLUDE_DIRECTORIES( ${Boost_INCLUDE_DIRS} )
+ENDIF()
+
+# Try to find Doxygen
+FIND_PROGRAM( DOXYGEN_CMD doxygen )
+
+# Descend into subdirectories
+ADD_SUBDIRECTORY( include )
+IF( DOXYGEN_CMD )
+   ADD_SUBDIRECTORY( doc )
+ENDIF()
+IF( ${BUILD_EXAMPLES} )
+   ADD_SUBDIRECTORY( src )
+ENDIF()
+

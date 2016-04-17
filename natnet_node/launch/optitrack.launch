@@ -1,0 +1,5 @@
+<launch>
+<node pkg="natnet_node" type="natnet_node" name="natnet_to_ros_node"/>
+<node pkg="optitrack_to_biorob_tf" type="optitrack_to_biorob_tf_node.py" name="optitrack_bodies_to_tf"/>
+<node pkg="cython_tracker" type="cython_tracker_node.py" name="ekf_node"/>
+</launch>
